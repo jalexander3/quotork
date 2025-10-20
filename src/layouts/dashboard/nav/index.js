@@ -91,7 +91,7 @@ export default function Nav({ openNav, onCloseNav }) {
             </Typography>
           </Box>
 
-          <Button href="mailto:jeremy@performant.software" target="_blank" variant="contained">
+          <Button href="mailto:jeremy@performant.software" variant="contained">
             Join Discovery
           </Button>
         </Stack>

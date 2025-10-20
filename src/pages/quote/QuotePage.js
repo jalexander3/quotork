@@ -1,23 +1,24 @@
-import { useState } from 'react';
-import { useLocation, useNavigate } from 'react-router-dom';
 import {
   Box,
   Button,
   Card,
   CardContent,
-  Stack,
-  Typography,
-  Input,
-  InputAdornment,
-  TextField,
+  CircularProgress,
   Collapse,
   FormControl,
+  Input,
+  InputAdornment,
   InputLabel,
-  Select,
   MenuItem,
-  CircularProgress,
+  Select,
+  Stack,
+  TextField,
+  Typography,
+  useMediaQuery,
 } from '@mui/material';
-import { IconMapPin, IconChevronDown, IconChevronUp } from '@tabler/icons-react';
+import { IconChevronDown, IconChevronUp, IconMapPin } from '@tabler/icons-react';
+import { useState } from 'react';
+import { useLocation } from 'react-router-dom';
 import { Results } from './Results';
 import { dummyQuoteData } from './dummydata';
 
@@ -38,6 +39,7 @@ export const QuotePage = () => {
   const [permitOptions, setPermitOptions] = useState(dummyQuoteData.permitOptions);
   const [showResults, setShowResults] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
+  const isMobile = useMediaQuery((theme) => theme.breakpoints.down('md'));
 
   const handleQuote = async () => {
     setIsLoading(true);
@@ -64,7 +66,7 @@ export const QuotePage = () => {
           sx={{ alignSelf: 'flex-start' }}
           startIcon={isLoading ? <CircularProgress size={20} /> : null}
         >
-          {isLoading ? 'Generating Quote...' : `${showResults ? 'New' : 'Get'} Quote`}
+          {`${showResults ? 'New' : 'Get'} Quote`}
         </Button>
       </Stack>
 
@@ -73,7 +75,7 @@ export const QuotePage = () => {
           <CardContent>
             <Stack spacing={3}>
               {/* Address Fields */}
-              <Stack direction="row" spacing={2}>
+              <Stack direction={isMobile ? 'column' : 'row'} spacing={2}>
                 <Input
                   fullWidth
                   value={fromAddress}
@@ -84,7 +86,7 @@ export const QuotePage = () => {
                       <IconMapPin size={20} style={{ color: 'var(--mui-palette-text-disabled)' }} />
                     </InputAdornment>
                   }
-                  sx={{ fontWeight: 'fontWeightBold' }}
+                  sx={{ fontWeight: isMobile ? 'fontWeightRegular' : 'fontWeightBold' }}
                 />
                 <Input
                   fullWidth
@@ -96,7 +98,7 @@ export const QuotePage = () => {
                       <IconMapPin size={20} style={{ color: 'var(--mui-palette-text-disabled)' }} />
                     </InputAdornment>
                   }
-                  sx={{ fontWeight: 'fontWeightBold' }}
+                  sx={{ fontWeight: isMobile ? 'fontWeightRegular' : 'fontWeightBold' }}
                 />
               </Stack>
 
