@@ -31,46 +31,46 @@ import Scrollbar from '../../../components/scrollbar';
 const NOTIFICATIONS = [
   {
     id: faker.datatype.uuid(),
-    title: 'Your order is placed',
-    description: 'waiting for shipping',
+    title: 'Quote Request Submitted',
+    description: 'Baltimore, MD → Newark, NJ route analysis complete',
     avatar: null,
-    type: 'order_placed',
+    type: 'quote_submitted',
     createdAt: set(new Date(), { hours: 10, minutes: 30 }),
     isUnRead: true,
   },
   {
     id: faker.datatype.uuid(),
-    title: faker.name.fullName(),
-    description: 'answered to your comment on the Minimal',
-    avatar: '/assets/images/avatars/avatar_2.jpg',
-    type: 'friend_interactive',
+    title: 'Permit Status Update',
+    description: 'Maryland oversize permit approved - PA permit pending',
+    avatar: null,
+    type: 'permit_update',
     createdAt: sub(new Date(), { hours: 3, minutes: 30 }),
     isUnRead: true,
   },
   {
     id: faker.datatype.uuid(),
-    title: 'You have new message',
-    description: '5 unread messages',
+    title: 'Escort Vehicle Assigned',
+    description: 'Certified escort service confirmed for MD/PA route',
     avatar: null,
-    type: 'chat_message',
+    type: 'escort_assigned',
     createdAt: sub(new Date(), { days: 1, hours: 3, minutes: 30 }),
     isUnRead: false,
   },
   {
     id: faker.datatype.uuid(),
-    title: 'You have new mail',
-    description: 'sent from Guido Padberg',
+    title: 'Route Optimization Alert',
+    description: 'Bridge closure on I-95 - alternative route suggested',
     avatar: null,
-    type: 'mail',
+    type: 'route_alert',
     createdAt: sub(new Date(), { days: 2, hours: 3, minutes: 30 }),
     isUnRead: false,
   },
   {
     id: faker.datatype.uuid(),
-    title: 'Delivery processing',
-    description: 'Your order is being shipped',
+    title: 'Quote Expiring Soon',
+    description: 'Your Baltimore → Newark quote expires in 24 hours',
     avatar: null,
-    type: 'order_shipped',
+    type: 'quote_expiring',
     createdAt: sub(new Date(), { days: 3, hours: 3, minutes: 30 }),
     isUnRead: false,
   },
@@ -245,27 +245,33 @@ function renderContent(notification) {
     </Typography>
   );
 
-  if (notification.type === 'order_placed') {
+  if (notification.type === 'quote_submitted') {
     return {
       avatar: <img alt={notification.title} src="/assets/icons/ic_notification_package.svg" />,
       title,
     };
   }
-  if (notification.type === 'order_shipped') {
-    return {
-      avatar: <img alt={notification.title} src="/assets/icons/ic_notification_shipping.svg" />,
-      title,
-    };
-  }
-  if (notification.type === 'mail') {
+  if (notification.type === 'permit_update') {
     return {
       avatar: <img alt={notification.title} src="/assets/icons/ic_notification_mail.svg" />,
       title,
     };
   }
-  if (notification.type === 'chat_message') {
+  if (notification.type === 'escort_assigned') {
+    return {
+      avatar: <img alt={notification.title} src="/assets/icons/ic_notification_shipping.svg" />,
+      title,
+    };
+  }
+  if (notification.type === 'route_alert') {
     return {
       avatar: <img alt={notification.title} src="/assets/icons/ic_notification_chat.svg" />,
+      title,
+    };
+  }
+  if (notification.type === 'quote_expiring') {
+    return {
+      avatar: <img alt={notification.title} src="/assets/icons/ic_notification_package.svg" />,
       title,
     };
   }
