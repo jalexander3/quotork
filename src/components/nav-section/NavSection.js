@@ -30,12 +30,12 @@ NavItem.propTypes = {
 };
 
 function NavItem({ item }) {
-  const { title, path, icon, info } = item;
+  const { title, path, icon, info, disabled } = item;
 
   return (
     <StyledNavItem
-      component={RouterLink}
-      to={path}
+      component={!disabled ? RouterLink : 'div'}
+      to={!disabled ? path : null}
       sx={{
         '&.active': {
           color: 'text.primary',

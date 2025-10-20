@@ -1,13 +1,9 @@
 import { useState } from 'react';
-// @mui
 import { styled } from '@mui/material/styles';
-import { Input, Slide, Button, IconButton, InputAdornment, ClickAwayListener } from '@mui/material';
-// utils
+import { Box, Input, Slide, Button, IconButton, InputAdornment, ClickAwayListener } from '@mui/material';
+import { useNavigate } from 'react-router-dom';
+import { IconMapPinDollar, IconMapPin } from '@tabler/icons-react';
 import { bgBlur } from '../../../utils/cssStyles';
-// component
-import Iconify from '../../../components/iconify';
-
-// ----------------------------------------------------------------------
 
 const HEADER_MOBILE = 64;
 const HEADER_DESKTOP = 92;
@@ -34,6 +30,9 @@ const StyledSearchbar = styled('div')(({ theme }) => ({
 
 export default function Searchbar() {
   const [open, setOpen] = useState(false);
+  const [fromAddress, setFromAddress] = useState('');
+  const [toAddress, setToAddress] = useState('');
+  const navigate = useNavigate();
 
   const handleOpen = () => {
     setOpen(!open);
@@ -48,26 +47,50 @@ export default function Searchbar() {
       <div>
         {!open && (
           <IconButton onClick={handleOpen}>
-            <Iconify icon="eva:search-fill" />
+            <IconMapPinDollar size={22} />
           </IconButton>
         )}
 
         <Slide direction="down" in={open} mountOnEnter unmountOnExit>
           <StyledSearchbar>
-            <Input
-              autoFocus
-              fullWidth
-              disableUnderline
-              placeholder="Search…"
-              startAdornment={
-                <InputAdornment position="start">
-                  <Iconify icon="eva:search-fill" sx={{ color: 'text.disabled', width: 20, height: 20 }} />
-                </InputAdornment>
-              }
-              sx={{ mr: 1, fontWeight: 'fontWeightBold' }}
-            />
-            <Button variant="contained" onClick={handleClose}>
-              Search
+            <Box sx={{ display: 'flex', gap: 2, flex: 1, alignItems: 'center' }}>
+              <Input
+                autoFocus
+                fullWidth
+                value={fromAddress}
+                onChange={(e) => setFromAddress(e.target.value)}
+                disableUnderline
+                placeholder="From address…"
+                startAdornment={
+                  <InputAdornment position="start">
+                    <IconMapPin size={20} style={{ color: 'var(--mui-palette-text-disabled)' }} />
+                  </InputAdornment>
+                }
+                sx={{ fontWeight: 'fontWeightBold' }}
+              />
+              <Input
+                fullWidth
+                value={toAddress}
+                onChange={(e) => setToAddress(e.target.value)}
+                disableUnderline
+                placeholder="To address…"
+                startAdornment={
+                  <InputAdornment position="start">
+                    <IconMapPin size={20} style={{ color: 'var(--mui-palette-text-disabled)' }} />
+                  </InputAdornment>
+                }
+                sx={{ fontWeight: 'fontWeightBold' }}
+              />
+            </Box>
+            <Button
+              variant="contained"
+              disabled={!fromAddress || !toAddress}
+              onClick={() => {
+                navigate('/dashboard/quote', { state: { fromAddress, toAddress } });
+                handleClose();
+              }}
+            >
+              Quote
             </Button>
           </StyledSearchbar>
         </Slide>

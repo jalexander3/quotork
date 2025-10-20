@@ -13,7 +13,6 @@ const Logo = forwardRef(({ disabledLink = false, sx, ...other }, ref) => {
   const PRIMARY_MAIN = theme.palette.primary.main;
 
   const PRIMARY_DARK = theme.palette.primary.dark;
-  const SECONDARY_MAIN = theme.palette.secondary.main;
   const SECONDARY_LIGHT = theme.palette.secondary.light;
   const SECONDARY_DARK = theme.palette.secondary.dark;
 

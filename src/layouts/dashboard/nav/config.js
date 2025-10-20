@@ -1,40 +1,48 @@
-// component
-import SvgColor from '../../../components/svg-color';
-
-// ----------------------------------------------------------------------
-
-const icon = (name) => <SvgColor src={`/assets/icons/navbar/${name}.svg`} sx={{ width: 1, height: 1 }} />;
+import {
+  IconLayoutDashboard,
+  IconFileDollar,
+  IconRoute,
+  IconClipboardList,
+  IconSettings,
+  IconShield,
+  IconLogs
+} from '@tabler/icons-react';
 
 const navConfig = [
   {
-    title: 'dashboard',
-    path: '/dashboard/app',
-    icon: icon('ic_analytics'),
+    title: 'Dashboard',
+    path: '/dashboard/dashboard',
+    disabled: true,
+    icon: <IconLayoutDashboard size={22} stroke={1.75} />,
   },
   {
-    title: 'user',
-    path: '/dashboard/user',
-    icon: icon('ic_user'),
+    title: 'Quote',
+    path: '/dashboard/quote',
+    icon: <IconFileDollar size={22} stroke={1.75} />,
   },
   {
-    title: 'product',
-    path: '/dashboard/products',
-    icon: icon('ic_cart'),
+    title: 'History',
+    path: '/dashboard/routes',
+    disabled: true,
+    icon: <IconLogs size={22} stroke={1.75} />,
   },
   {
-    title: 'blog',
-    path: '/dashboard/blog',
-    icon: icon('ic_blog'),
+    title: 'Templates',
+    path: '/dashboard/permits',
+    disabled: true,
+    icon: <IconClipboardList size={22} stroke={1.75} />,
   },
   {
-    title: 'login',
-    path: '/login',
-    icon: icon('ic_lock'),
+    title: 'Settings',
+    path: '/dashboard/settings',
+    disabled: true,
+    icon: <IconSettings size={22} stroke={1.75} />,
   },
   {
-    title: 'Not found',
-    path: '/404',
-    icon: icon('ic_disabled'),
+    title: 'Admin',
+    path: '/dashboard/admin',
+    disabled: true,
+    icon: <IconShield size={22} stroke={1.75} />,
   },
 ];
 
