@@ -17,7 +17,11 @@ export default function Router() {
   const routes = useRoutes([
     {
       path: '/',
-      element: <Navigate to="/dashboard/quote" />,
+      element: <Navigate to="/login" />,
+    },
+    {
+      path: '/login',
+      element: <LoginPage />,
     },
     {
       path: '/dashboard',
@@ -30,7 +34,7 @@ export default function Router() {
     {
       element: <SimpleLayout />,
       children: [
-        { element: <Navigate to="/dashboard/quote" />, index: true },
+        { element: <Navigate to="/login" />, index: true },
         { path: '404', element: <Page404 /> },
         { path: '*', element: <Navigate to="/404" /> },
       ],

@@ -46,9 +46,6 @@ export default function Nav({ openNav, onCloseNav }) {
     >
       <Box sx={{ px: 2.5, py: 3 }}>
         <Logo />
-        <Typography variant="caption" component="div" sx={{ mt: -1, fontStyle: 'italic' }} color="text.secondary">
-          Smart heavy-haul quoting
-        </Typography>
       </Box>
 
       <Box sx={{ mb: 5, mx: 2.5 }}>

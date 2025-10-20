@@ -1,7 +1,8 @@
 import { Helmet } from 'react-helmet-async';
 // @mui
 import { styled } from '@mui/material/styles';
-import { Link, Container, Typography, Divider, Stack, Button } from '@mui/material';
+import { Link, Container, Typography, Divider, Box, Button } from '@mui/material';
+import { IconArrowRight } from '@tabler/icons-react';
 // hooks
 import useResponsive from '../hooks/useResponsive';
 // components
@@ -46,7 +47,7 @@ export default function LoginPage() {
   return (
     <>
       <Helmet>
-        <title> Login | Minimal UI </title>
+        <title> Login | QuoTork </title>
       </Helmet>
 
       <StyledRoot>
@@ -70,28 +71,32 @@ export default function LoginPage() {
         <Container maxWidth="sm">
           <StyledContent>
             <Typography variant="h4" gutterBottom>
-              Sign in to Minimal
+              Sign in to <Logo hideLogo hideTagline sx={{ display: 'inline-block' }} mainFontSize="1.75rem" />
             </Typography>
 
-            <Typography variant="body2" sx={{ mb: 5 }}>
-              Don’t have an account? {''}
-              <Link variant="subtitle2">Get started</Link>
+            <Typography variant="body2" sx={{ mb: 2 }} color="text.secondary" fontStyle="italic">
+              QuoTork is a concept application demonstrating smart heavy-haul quoting capabilities for the
+              transportation industry. It is for evaluation and demonstration purposes only.
             </Typography>
 
-            <Stack direction="row" spacing={2}>
-              <Button fullWidth size="large" color="inherit" variant="outlined">
-                <Iconify icon="eva:google-fill" color="#DF3E30" width={22} height={22} />
+            <Box sx={{ display: 'flex', justifyContent: 'flex-start' }}>
+              <Button
+                disableRipple
+                component={Link}
+                href="/dashboard/quote"
+                variant="standard"
+                size="small"
+                endIcon={<IconArrowRight size={20} />}
+                sx={{
+                  textTransform: 'none',
+                  pl: 0,
+                  '&:hover': { backgroundColor: 'transparent', color: 'text.secondary' },
+                  '&:active': { backgroundColor: 'transparent', boxShadow: 'none' },
+                }}
+              >
+                Proceed to the Application
               </Button>
-
-              <Button fullWidth size="large" color="inherit" variant="outlined">
-                <Iconify icon="eva:facebook-fill" color="#1877F2" width={22} height={22} />
-              </Button>
-
-              <Button fullWidth size="large" color="inherit" variant="outlined">
-                <Iconify icon="eva:twitter-fill" color="#1C9CEA" width={22} height={22} />
-              </Button>
-            </Stack>
-
+            </Box>
             <Divider sx={{ my: 3 }}>
               <Typography variant="body2" sx={{ color: 'text.secondary' }}>
                 OR
