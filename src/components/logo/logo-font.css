@@ -1,0 +1,8 @@
+/* Load Google font only for the logo component scope */
+@import url('https://fonts.googleapis.com/css2?family=PT+Serif+Caption&display=swap');
+
+.logoFont {
+  font-family: 'PT Serif Caption', system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+}
+
+
